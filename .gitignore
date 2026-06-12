@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Agent tooling (shadcn skill, installed via `npx skills add`)
+.agents/
+skills-lock.json
