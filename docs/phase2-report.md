@@ -17,28 +17,28 @@ shadcn/ui / ダークモード / パス Alias / ESLint・Prettier / ディレク
 
 ## 2. 実施内容
 
-| 手順 | 内容 | 結果 |
-|---|---|---|
-| インストール | `pnpm add -D tailwindcss@latest @tailwindcss/vite@latest` | 両方 4.3.0・peer 依存エラーなし |
-| プラグイン登録 | `vite.config.ts` に `tailwindcss()` 追記（React プラグイン温存） | `[react(), tailwindcss()]` |
-| CSS エントリ差し替え | `src/index.css` を `@import "tailwindcss";` の1行に | 完了 |
-| クリーンアップ | `src/App.tsx` を最小版に置換 / `src/App.css`・`src/assets/react.svg` 削除 | 完了 |
-| 動作確認 | `pnpm dev`（:5174） | HTTP 200・ユーティリティ生成確認・停止 |
-| コミット | `git commit -m "chore: setup tailwindcss v4"` | `a4fb0b8` |
+| 手順                 | 内容                                                                      | 結果                                   |
+| -------------------- | ------------------------------------------------------------------------- | -------------------------------------- |
+| インストール         | `pnpm add -D tailwindcss@latest @tailwindcss/vite@latest`                 | 両方 4.3.0・peer 依存エラーなし        |
+| プラグイン登録       | `vite.config.ts` に `tailwindcss()` 追記（React プラグイン温存）          | `[react(), tailwindcss()]`             |
+| CSS エントリ差し替え | `src/index.css` を `@import "tailwindcss";` の1行に                       | 完了                                   |
+| クリーンアップ       | `src/App.tsx` を最小版に置換 / `src/App.css`・`src/assets/react.svg` 削除 | 完了                                   |
+| 動作確認             | `pnpm dev`（:5174）                                                       | HTTP 200・ユーティリティ生成確認・停止 |
+| コミット             | `git commit -m "chore: setup tailwindcss v4"`                             | `a4fb0b8`                              |
 
 ---
 
 ## 3. 完了基準チェックリスト
 
-| 項目 | 結果 |
-|---|---|
-| `@tailwindcss/vite` と `tailwindcss` が 4.2.2 以上 | ✅ 両方 `^4.3.0` |
-| `vite.config.ts` の `plugins` に `tailwindcss()`（React も残存） | ✅ `[react(), tailwindcss()]` |
-| `src/index.css` が `@import "tailwindcss";` の1行 | ✅ |
-| `src/App.css` 削除 | ✅ |
+| 項目                                                               | 結果                                                                                 |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `@tailwindcss/vite` と `tailwindcss` が 4.2.2 以上                 | ✅ 両方 `^4.3.0`                                                                     |
+| `vite.config.ts` の `plugins` に `tailwindcss()`（React も残存）   | ✅ `[react(), tailwindcss()]`                                                        |
+| `src/index.css` が `@import "tailwindcss";` の1行                  | ✅                                                                                   |
+| `src/App.css` 削除                                                 | ✅                                                                                   |
 | `pnpm dev` で青い太字テキストが薄グレー背景で表示（Tailwind 有効） | ✅ 生成CSSに `bg-slate-50`/`text-blue-600`/`min-h-screen`/`font-bold` 出力・HTTP 200 |
-| `tailwind.config.js` / `postcss.config.js` を作っていない | ✅ いずれも未作成 |
-| `chore: setup tailwindcss v4` コミット | ✅ `a4fb0b8` |
+| `tailwind.config.js` / `postcss.config.js` を作っていない          | ✅ いずれも未作成                                                                    |
+| `chore: setup tailwindcss v4` コミット                             | ✅ `a4fb0b8`                                                                         |
 
 ---
 

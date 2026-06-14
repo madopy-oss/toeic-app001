@@ -10,6 +10,7 @@
 ## 1. スコープ
 
 引き継ぎ文書 Phase 3 の2タスクを実施。
+
 - タスクA: リポジトリ棚卸し（素性不明ファイル `src/assets/hero.png` / `public/icons.svg` の実態確認。削除はしない）
 - タスクB: パス Alias 設定（`@/` → `src/`）
 
@@ -50,10 +51,10 @@ vite.config.ts
 
 ### hero.png / icons.svg の実在有無（未削除）
 
-| ファイル | 実在 | 場所 | サイズ | 種別 |
-|---|---|---|---|---|
-| hero.png | ✅ 実在 | `src/assets/hero.png` | 13,057 B | PNG 343×361 |
-| icons.svg | ✅ 実在 | `public/icons.svg` | 5,031 B | SVG |
+| ファイル  | 実在    | 場所                  | サイズ   | 種別        |
+| --------- | ------- | --------------------- | -------- | ----------- |
+| hero.png  | ✅ 実在 | `src/assets/hero.png` | 13,057 B | PNG 343×361 |
+| icons.svg | ✅ 実在 | `public/icons.svg`    | 5,031 B  | SVG         |
 
 ### 素性の判明結果
 
@@ -63,16 +64,16 @@ vite.config.ts
 
 ## 3. タスクB：完了基準チェックリスト
 
-| 項目 | 結果 |
-|---|---|
-| 棚卸しの生出力を報告に添付 | ✅ §2 |
-| hero.png / icons.svg の実在有無を明記（未削除） | ✅ 両方実在・未削除 |
-| `tsconfig.app.json` に `"@/*": ["./src/*"]`（baseUrl 未追加） | ✅ paths のみ追加・baseUrl 無し |
-| `vite.config.ts` に `resolve.alias` の `@`→`src` | ✅ `import.meta.dirname` 使用 |
-| `src/main.tsx` が `@/App` で import | ✅ `import App from '@/App'` |
-| `pnpm exec tsc --noEmit` がエラーなし | ✅ exit 0 |
-| `pnpm build` がエラーなし | ✅ exit 0（`tsc -b && vite build` 成功） |
-| `chore: configure path alias @/` コミット | ✅ `2a48992` |
+| 項目                                                          | 結果                                     |
+| ------------------------------------------------------------- | ---------------------------------------- |
+| 棚卸しの生出力を報告に添付                                    | ✅ §2                                    |
+| hero.png / icons.svg の実在有無を明記（未削除）               | ✅ 両方実在・未削除                      |
+| `tsconfig.app.json` に `"@/*": ["./src/*"]`（baseUrl 未追加） | ✅ paths のみ追加・baseUrl 無し          |
+| `vite.config.ts` に `resolve.alias` の `@`→`src`              | ✅ `import.meta.dirname` 使用            |
+| `src/main.tsx` が `@/App` で import                           | ✅ `import App from '@/App'`             |
+| `pnpm exec tsc --noEmit` がエラーなし                         | ✅ exit 0                                |
+| `pnpm build` がエラーなし                                     | ✅ exit 0（`tsc -b && vite build` 成功） |
+| `chore: configure path alias @/` コミット                     | ✅ `2a48992`                             |
 
 ---
 

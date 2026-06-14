@@ -17,27 +17,27 @@ Tailwind / shadcn / パス Alias / ESLint 追加設定 / ディレクトリ構�
 
 ## 2. 実施内容
 
-| 手順 | 内容 | 結果 |
-|---|---|---|
-| 前提確認 | `node -v` / `pnpm -v` | v22.22.2 / 10.33.0 |
-| プロジェクト生成 | `pnpm create vite@latest`（`react-ts`） | 成功 |
-| 依存導入 | `pnpm install` | 成功（Vite 8 / React 19 系） |
-| 起動確認 | `pnpm dev`（:5173） | HTTP 200・デモページ表示・停止 |
-| 初回コミット | `git commit -m "chore: bootstrap vite + react + ts"` | `9cc234c` |
+| 手順             | 内容                                                 | 結果                           |
+| ---------------- | ---------------------------------------------------- | ------------------------------ |
+| 前提確認         | `node -v` / `pnpm -v`                                | v22.22.2 / 10.33.0             |
+| プロジェクト生成 | `pnpm create vite@latest`（`react-ts`）              | 成功                           |
+| 依存導入         | `pnpm install`                                       | 成功（Vite 8 / React 19 系）   |
+| 起動確認         | `pnpm dev`（:5173）                                  | HTTP 200・デモページ表示・停止 |
+| 初回コミット     | `git commit -m "chore: bootstrap vite + react + ts"` | `9cc234c`                      |
 
 ---
 
 ## 3. 完了基準チェックリスト
 
-| 項目 | 結果 |
-|---|---|
-| `node -v` が v22.x.x | ✅ v22.22.2 |
-| `pnpm -v` が表示される | ✅ 10.33.0 |
-| ルートに必須ファイル一式（`package.json`/`vite.config.ts`/`tsconfig.json`/`tsconfig.app.json`/`tsconfig.node.json`/`index.html`/`src/main.tsx`/`src/App.tsx`） | ✅ 全 OK |
-| `package.json` の `react` が `^19` 系 | ✅ `^19.2.6`（実体 19.2.7） |
-| `pnpm dev` でデモページ表示 | ✅ HTTP 200 |
-| `.gitignore` に `node_modules` `dist` | ✅ 含む |
-| `chore: bootstrap vite + react + ts` コミットが1つ | ✅ `9cc234c` |
+| 項目                                                                                                                                                           | 結果                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `node -v` が v22.x.x                                                                                                                                           | ✅ v22.22.2                 |
+| `pnpm -v` が表示される                                                                                                                                         | ✅ 10.33.0                  |
+| ルートに必須ファイル一式（`package.json`/`vite.config.ts`/`tsconfig.json`/`tsconfig.app.json`/`tsconfig.node.json`/`index.html`/`src/main.tsx`/`src/App.tsx`） | ✅ 全 OK                    |
+| `package.json` の `react` が `^19` 系                                                                                                                          | ✅ `^19.2.6`（実体 19.2.7） |
+| `pnpm dev` でデモページ表示                                                                                                                                    | ✅ HTTP 200                 |
+| `.gitignore` に `node_modules` `dist`                                                                                                                          | ✅ 含む                     |
+| `chore: bootstrap vite + react + ts` コミットが1つ                                                                                                             | ✅ `9cc234c`                |
 
 ---
 

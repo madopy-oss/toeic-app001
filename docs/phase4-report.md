@@ -15,28 +15,28 @@ Phase 4 は CLI 仕様の食い違いとネットワーク制約で計3回差し
 
 ## 2. 実施内容
 
-| ステップ | 内容 | 結果 |
-|---|---|---|
-| クリーン確認 | `git status` | 差分なし（`67707c7` 基点） |
-| 依存導入 | `pnpm add radix-ui class-variance-authority clsx tailwind-merge tw-animate-css lucide-react` | 6個追加・npm のみ・完走 |
-| 孤立アセット削除 | `git rm src/assets/hero.png public/icons.svg src/assets/vite.svg` | 参照ゼロ確認後に削除（favicon.svg 残存） |
-| ファイル配置 | button/card/input.tsx・lib/utils.ts・index.css（置換）・components.json・App.tsx（置換） | 7ファイル配置 |
-| 検証 | `tsc --noEmit` / `pnpm build` / `pnpm dev` | すべて成功 |
-| コミット | `chore: setup shadcn/ui with button/card/input` | `c78580b` |
+| ステップ         | 内容                                                                                         | 結果                                     |
+| ---------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| クリーン確認     | `git status`                                                                                 | 差分なし（`67707c7` 基点）               |
+| 依存導入         | `pnpm add radix-ui class-variance-authority clsx tailwind-merge tw-animate-css lucide-react` | 6個追加・npm のみ・完走                  |
+| 孤立アセット削除 | `git rm src/assets/hero.png public/icons.svg src/assets/vite.svg`                            | 参照ゼロ確認後に削除（favicon.svg 残存） |
+| ファイル配置     | button/card/input.tsx・lib/utils.ts・index.css（置換）・components.json・App.tsx（置換）     | 7ファイル配置                            |
+| 検証             | `tsc --noEmit` / `pnpm build` / `pnpm dev`                                                   | すべて成功                               |
+| コミット         | `chore: setup shadcn/ui with button/card/input`                                              | `c78580b`                                |
 
 ---
 
 ## 3. 完了基準チェックリスト
 
-| 項目 | 結果 |
-|---|---|
-| 依存6個が package.json に追加 | ✅ radix-ui 1.5.0 / class-variance-authority 0.7.1 / clsx 2.1.1 / tailwind-merge 3.6.0 / tw-animate-css 1.4.0 / lucide-react 1.18.0 |
-| 孤立アセット3つ削除（favicon.svg 残存） | ✅ |
-| 7ファイル配置 | ✅ |
-| 保護対象3点が無傷 | ✅ vite alias / main.tsx `@/App` / tsconfig paths |
-| `tsc --noEmit` / `pnpm build` エラーなし | ✅ 両 exit 0 |
-| `.dark` でテーマ反転 | ✅ dev 変換後 CSS で検証 |
-| コミット | ✅ `c78580b` |
+| 項目                                     | 結果                                                                                                                                |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 依存6個が package.json に追加            | ✅ radix-ui 1.5.0 / class-variance-authority 0.7.1 / clsx 2.1.1 / tailwind-merge 3.6.0 / tw-animate-css 1.4.0 / lucide-react 1.18.0 |
+| 孤立アセット3つ削除（favicon.svg 残存）  | ✅                                                                                                                                  |
+| 7ファイル配置                            | ✅                                                                                                                                  |
+| 保護対象3点が無傷                        | ✅ vite alias / main.tsx `@/App` / tsconfig paths                                                                                   |
+| `tsc --noEmit` / `pnpm build` エラーなし | ✅ 両 exit 0                                                                                                                        |
+| `.dark` でテーマ反転                     | ✅ dev 変換後 CSS で検証                                                                                                            |
+| コミット                                 | ✅ `c78580b`                                                                                                                        |
 
 ---
 
