@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# TOEIC SRS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TOEIC 語彙学習のための個人用 PWA。SM-2 アルゴリズムによる SRS（間隔反復学習）と Anki 流の4段階評価で単語を覚える。モバイル特化（Android Chrome 主軸、iOS Safari ベストエフォート）。
 
-Currently, two official plugins are available:
+## 技術スタック
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript** + **Vite 8**
+- **Tailwind CSS 4** + **shadcn/ui**（new-york / base color: neutral）
+- **Dexie.js**（IndexedDB）※ ステップ2以降で導入
+- **vite-plugin-pwa** ※ 後続ステップで導入
+- デプロイ: **Cloudflare Pages**（ルートデプロイ）
 
-## React Compiler
+## 必要環境
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 22.x
+- pnpm
 
-## Expanding the ESLint configuration
+## セットアップ
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+pnpm install
+pnpm dev          # 開発サーバ（http://localhost:5173）
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## スクリプト
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| コマンド | 内容 |
+|---|---|
+| `pnpm dev` | 開発サーバ |
+| `pnpm build` | 本番ビルド |
+| `pnpm preview` | ビルド成果物のプレビュー |
+| `pnpm lint` | ESLint |
+| `pnpm format` | Prettier で整形 |
+| `pnpm format:check` | 整形チェック |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ディレクトリ構成
+
 ```
+src/
+  components/ui/      shadcn/ui の生成物（手動編集しない）
+  components/common/  自作の共通 UI（Header, BottomNav 等）
+  features/           画面・機能単位（実装時にサブディレクトリを作成）
+  db/                 Dexie スキーマ + repository 層
+  lib/                純粋ロジック（SM-2 SRS 計算等、テスト対象）
+  hooks/              共通カスタムフック
+  types/              共通型定義
+  routes/             ルーター定義
+```
+
+## 開発メモ
+
+- **shadcn/ui の追加**: 実行環境で `ui.shadcn.com` が遮断されているため、コンポーネント追加はネットワーク制約のない環境で取得してリポジトリに取り込む。
+- **ダークモード**: CSS 変数 + `.dark` の土台のみ実装済み。切り替え（auto/light/dark・システム追従・永続化）は設定画面フェーズで実装予定。
+- **カラー**: base color は neutral。PWA の `theme_color` は `#0f172a`。
+- `src/components/ui/` は ESLint の `react-refresh/only-export-components` を warn に緩和（shadcn 標準構造のため）。
+
+## ステータス
+
+ステップ1（環境セットアップ）完了。ステップ2以降で db（Dexie）→ lib（SRS ロジック）→ features（画面）→ routes（ルーティング）→ PWA 構成 の順に実装予定。
